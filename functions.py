@@ -27,14 +27,13 @@ def print_page(content, **kwargs):
         print(f'{key}: {value}')
 print_page('my content', published=2019, author="rei suyama")
 
-def print_pages(*args, **kwargs):
-    print(content)
+def print_pages_unpack_list_and_map(*args, **kwargs):
     for content in args:
         print(content)
     for key, value in kwargs.items():
         print(f'{key}: {value}')
 
-print_page('my content', 'content2', 'content3', published=2019, author="rei suyama")
+print_pages_unpack_list_and_map('my content', 'content2', 'content3', published=2019, author="rei suyama")
 
 def increment_require_keyword(page_num, last, *, ignore_error=False):
     next_page = page_num + 1
@@ -46,7 +45,7 @@ def increment_require_keyword(page_num, last, *, ignore_error=False):
 
 increment_require_keyword(2, 2, ignore_error=True)
 
-def increment_require_place(page_num, last, /, ignore_error=False):
+def increment_positional_only(page_num, last, /, ignore_error=False):
     next_page = page_num + 1
     if next_page <= last:
         return next_page
@@ -54,7 +53,7 @@ def increment_require_place(page_num, last, /, ignore_error=False):
         return None
     raise ValueError('Invalid arguments')
 
-increment_require_place(2, 2, True)
+increment_positional_only(2, 2, True)
 
 def print_page_with_unpack(one, two, three):
     print(one)
